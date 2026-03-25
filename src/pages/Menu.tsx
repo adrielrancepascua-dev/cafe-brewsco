@@ -151,7 +151,7 @@ export default function Menu() {
         {MENU_CATEGORIES.map((category) => (
           <div 
             key={category.id} 
-            ref={el => categoryRefs.current[category.id] = el}
+            ref={el => { categoryRefs.current[category.id] = el }}
             className="scroll-mt-32"
           >
             <div className="flex items-center gap-4 mb-8">

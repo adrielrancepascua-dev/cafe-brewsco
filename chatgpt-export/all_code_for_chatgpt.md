@@ -1,10 +1,7 @@
 # Cafe BrewsCo Codebase
 
-
-
-## File: index.html
+## index.html
 ```html
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <title>Café BrewsCo | San Carlos City</title>
     <meta name="description" content="Café BrewsCo in San Carlos City, Pangasinan. Brewing Happiness in a Cup. Enjoy specialty coffee, full meals, and party trays in our cozy solar-powered café. Open daily 9AM-12MN.">
   </head>
@@ -25,288 +22,40 @@
 
 ```
 
-## File: package.json
-```json
-
-{
-  "name": "stay-awhile-cafe",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "framer-motion": "^12.38.0",
-    "lucide-react": "^1.0.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "@tailwindcss/postcss": "^4.2.2",
-    "@types/node": "^24.12.0",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "autoprefixer": "^10.4.27",
-    "eslint": "^9.39.4",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.4.0",
-    "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.2",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.57.0",
-    "vite": "^8.0.1"
-  }
-}
-
-```
-
-## File: tailwind.config.js
+## tailwind.config.js
 ```js
-
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         brand: {
-          beige: '#EFE6DD',
-          brown: '#5D4037',
-          cream: '#F9F7F2',
-          light: '#F9F7F2', // Alias for backward compatibility
-          accent: '#A1887F',
-          dark: '#3E2723',
-          muted: '#D7CCC8',
-        }
+          light: '#FFF7ED',   // orange-50: lively warm white
+          beige: '#FFEDD5',   // orange-100: soft energetic cream
+          primary: '#EA580C', // orange-600: vibrant vibrant primary
+          accent: '#F59E0B',  // yellow-500: playful pop
+          brown: '#9A3412',   // orange-800: rich warm dark
+          dark: '#431407',    // orange-950: deepest contrast
+        },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['"Lato"', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['Montserrat', 'sans-serif'],
+      },
+      boxShadow: {
+        'brutal': '6px 6px 0px 0px rgba(67, 20, 7, 1)', // for high-energy cards
+        'brutal-hover': '2px 2px 0px 0px rgba(67, 20, 7, 1)',
       }
     },
   },
   plugins: [],
-}
+};
 
 ```
 
-## File: vite.config.ts
-```ts
-
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
-
-```
-
-## File: src/App.css
-```css
-
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
-
-```
-
-## File: src/App.tsx
+## src/App.tsx
 ```tsx
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import Home from './pages/Home';
@@ -374,26 +123,8 @@ export default App;
 
 ```
 
-## File: src/index.css
-```css
-
-@import "tailwindcss";
-@config "../tailwind.config.js";
-
-@layer base {
-  body {
-    @apply bg-brand-light text-brand-dark font-sans;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
-  }
-}
-
-```
-
-## File: src/main.tsx
+## src/main.tsx
 ```tsx
-
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -407,9 +138,182 @@ createRoot(document.getElementById('root')!).render(
 
 ```
 
-## File: src/components/Footer.tsx
-```tsx
+## src/index.css
+```css
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
+@layer base {
+  body {
+    @apply bg-brand-light text-brand-dark font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+```
+
+## src/components/Hero.tsx
+```tsx
+import { Link } from 'react-router-dom';
+import { ArrowRight, Coffee } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+export default function Hero() {
+  return (
+    <div className="relative bg-brand-light min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+          alt="Café BrewsCo Interior"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 to-brand-dark/60 mix-blend-multiply" />
+      </div>
+
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <span className="inline-block py-1 px-3 rounded-full bg-brand-accent text-brand-dark font-bold text-sm tracking-wider mb-6 uppercase shadow-brutal animate-bounce">
+            Open Daily 9 AM - 12 MN
+          </span>
+          <h1 className="font-display text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight uppercase">
+            Your Go-To <span className="text-brand-primary">Hangout Spot</span><br/> in San Carlos
+          </h1>
+          <p className="text-xl text-brand-light/90 mb-10 max-w-2xl mx-auto font-medium">
+            Barkada nights, study sessions, and late-night cravings. 
+            Come for the coffee, stay for the high-energy, cozy vibes.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link 
+              to="/menu"
+              className="group flex items-center gap-2 bg-brand-primary text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-brand-dark transition-all shadow-brutal hover:shadow-brutal-hover hover:translate-y-1 hover:translate-x-1"
+            >
+              <Coffee className="w-5 h-5" />
+              View Menu
+            </Link>
+            <a 
+              href="https://www.foodpanda.ph/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 bg-brand-accent text-brand-dark px-8 py-4 rounded-xl text-lg font-bold hover:bg-brand-light transition-all shadow-brutal hover:shadow-brutal-hover hover:translate-y-1 hover:translate-x-1"
+            >
+              Order Now <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+```
+
+## src/components/Navbar.tsx
+```tsx
+import { Link, NavLink } from 'react-router-dom';
+import { Menu as MenuIcon, X, Coffee } from 'lucide-react';
+import { useState } from 'react';
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Menu', href: '/menu' },
+    { name: 'Party Trays', href: '/party-trays' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
+  return (
+    <nav className="bg-brand-light/95 flex backdrop-blur-md fixed w-full z-50 shadow-sm border-b-2 border-brand-dark font-sans h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="bg-brand-primary p-2 rounded-lg shadow-[3px_3px_0_0_#431407] group-hover:shadow-[1px_1px_0_0_#431407] group-hover:translate-x-[2px] group-hover:translate-y-[2px] transition-all border border-brand-dark">
+            <Coffee className="h-6 w-6 text-white" />
+          </div>
+          <span className="font-display text-2xl font-black text-brand-dark uppercase tracking-tight">Café BrewsCo</span>
+        </Link>
+        
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center space-x-6">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className={({ isActive }) =>
+                `text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
+                  isActive ? 'text-brand-primary border-b-2 border-brand-primary' : 'text-brand-dark hover:text-brand-primary'
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
+          ))}
+          <a 
+            href="https://www.foodpanda.ph/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-brand-dark text-white px-6 py-2 rounded-lg border-2 border-brand-dark hover:bg-brand-primary hover:border-brand-primary transition-all text-sm font-bold uppercase shadow-[4px_4px_0_0_#EA580C]"
+          >
+            Order Delivery
+          </a>
+        </div>
+
+        {/* Mobile menu toggle */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-brand-dark p-2 bg-brand-beige border-2 border-brand-dark rounded-lg shadow-[3px_3px_0_0_#431407]"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu panel */}
+      {isOpen && (
+        <div className="absolute top-20 left-0 w-full bg-brand-light border-b-4 border-brand-dark shadow-xl md:hidden px-4 py-6 flex flex-col gap-4">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-xl border-2 border-brand-dark text-center font-bold uppercase ${
+                  isActive ? 'bg-brand-primary text-white shadow-brutal' : 'bg-white text-brand-dark hover:bg-brand-beige shadow-sm'
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
+          ))}
+          <a 
+            href="https://www.foodpanda.ph/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block text-center mt-4 bg-brand-dark text-brand-accent border-2 border-brand-dark px-4 py-4 rounded-xl font-black uppercase text-lg"
+          >
+            Order Delivery Now
+          </a>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+```
+
+## src/components/Footer.tsx
+```tsx
 import { MapPin, Phone, Clock } from 'lucide-react';
 
 export default function Footer() {
@@ -476,229 +380,269 @@ export default function Footer() {
 
 ```
 
-## File: src/components/Hero.tsx
+## src/pages/Home.tsx
 ```tsx
-
+import Hero from '../components/Hero';
+import { Users, Wifi, Clock, Star, Gift, Utensils, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function Hero() {
-  return (
-    <div className="relative bg-brand-beige h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image Overlay */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="absolute inset-0 z-0"
-      >
-        <img 
-          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
-          alt="Stay Awhile Café Interior" 
-          className="w-full h-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 bg-brand-dark/30 mix-blend-multiply" />
-      </motion.div>
+export default function Home() {
+  const experiences = [
+    {
+      icon: <Users className="w-8 h-8 text-brand-primary" />,
+      title: "Barkada Core",
+      desc: "Spacious seating designed for groups. Laugh, eat, and stay as long as you want."
+    },
+    {
+      icon: <Clock className="w-8 h-8 text-brand-accent" />,
+      title: "Late Night Hangs",
+      desc: "Open from 9 AM all the way to 12 Midnight for your late-night food & coffee cravings."
+    },
+    {
+      icon: <Wifi className="w-8 h-8 text-brand-primary" />,
+      title: "Study & Work",
+      desc: "Free speedy WiFi, cozy corners on our second floor, and unlimited caffeine."
+    },
+    {
+      icon: <Star className="w-8 h-8 text-brand-accent" />,
+      title: "VIP Room",
+      desc: "Need privacy? Book our conference room for professional meetings or private parties."
+    }
+  ];
 
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <motion.h1 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight"
-        >
-          Brewing Happiness in a Cup
-        </motion.h1>
-        <motion.p 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-sans text-xl md:text-2xl text-brand-beige mb-4 font-light drop-shadow-md"
-        >
-          Sip Happens...
-        </motion.p>
-        <motion.p 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="font-sans text-lg text-brand-beige/90 mb-10 drop-shadow-md font-medium tracking-wide"
-        >
-          Rizal Ave., San Carlos City • Open daily 9 AM – 12 MN
-        </motion.p>
-        
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Link 
-            to="/menu" 
-            className="group bg-brand-brown text-white px-8 py-3 rounded-full hover:bg-brand-dark transition-all duration-300 font-medium flex items-center gap-2 transform hover:-translate-y-1 shadow-lg"
-          >
-            View Menu
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <a 
-            href="https://www.foodpanda.ph/" 
-            target="_blank"
-            rel="noreferrer"
-            className="group bg-brand-beige text-brand-dark px-8 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium transform hover:-translate-y-1 shadow-lg border border-transparent"
-          >
-            Order via Foodpanda
-          </a>
-          <a 
-            href="tel:09287945998" 
-            className="group bg-transparent text-white px-8 py-3 rounded-full hover:bg-white/10 transition-all duration-300 font-medium transform hover:-translate-y-1 border border-white"
-          >
-            Reserve a Table
-          </a>
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
-```
-
-## File: src/components/Navbar.tsx
-```tsx
-
-import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Coffee } from 'lucide-react';
-import { useState } from 'react';
-
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Menu', href: '/menu' },
-    { name: 'Party Trays', href: '/party-trays' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Contact', href: '/contact' },
+  const bestSellers = [
+    { name: "Spanish Latte", type: "Drink", img: "https://images.unsplash.com/photo-1560931560-619058b73a34?auto=format&fit=crop&w=600&q=80" },
+    { name: "Java Chip Frappe", type: "Frappe", img: "https://images.unsplash.com/photo-1530373239216-42518e6b4063?auto=format&fit=crop&w=600&q=80" },
+    { name: "Beef Salpicao", type: "Meal", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" },
+    { name: "Flavoured Croffles", type: "Pastry", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" }
   ];
 
   return (
-    <nav className="bg-brand-beige/90 backdrop-blur-sm fixed w-full z-50 shadow-sm font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
-          <div className="flex-shrink-0 flex items-center gap-2">
-            <Link to="/" className="flex items-center gap-2">
-              <Coffee className="h-8 w-8 text-brand-brown" />
-              <span className="font-serif text-2xl font-bold text-brand-dark">Café BrewsCo</span>
+    <div className="bg-brand-light font-sans">
+      <Hero />
+
+      {/* Experience Section */}
+      <section className="py-24 px-4 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tight">Why People Come Here</h2>
+          <p className="mt-4 text-brand-brown font-medium text-lg">This is where you go with friends.</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {experiences.map((exp, i) => (
+            <motion.div 
+              key={i}
+              whileHover={{ y: -8 }}
+              className="bg-white p-8 rounded-2xl border-2 border-brand-dark shadow-brutal transition-transform"
+            >
+              <div className="bg-brand-beige w-16 h-16 rounded-xl flex items-center justify-center mb-6 border border-brand-dark">
+                {exp.icon}
+              </div>
+              <h3 className="font-display text-2xl font-bold text-brand-dark mb-3">{exp.title}</h3>
+              <p className="text-brand-brown/80 leading-relaxed">{exp.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Menu / Best Sellers */}
+      <section className="py-24 bg-brand-dark text-brand-light px-4 border-y-4 border-brand-primary">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+              <h2 className="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tight">Crowd Favorites</h2>
+              <p className="mt-4 text-brand-accent font-medium text-lg">You can never go wrong with these Bestsellers.</p>
+            </div>
+            <Link to="/menu" className="bg-brand-primary text-white font-bold py-3 px-8 rounded-xl border-2 border-transparent hover:border-white transition-all shadow-[4px_4px_0_0_#FFF]">
+              See Full Menu
             </Link>
           </div>
-          
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 ${
-                    isActive ? 'text-brand-brown underline underline-offset-4' : 'text-brand-dark hover:text-brand-brown'
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-            <a 
-              href="https://www.foodpanda.ph/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-brand-brown text-white px-4 py-2 rounded-full hover:bg-brand-accent transition-colors text-sm font-medium"
-            >
-              Order Online
-            </a>
-          </div>
 
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-brand-dark hover:text-brand-brown focus:outline-none"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {bestSellers.map((item, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 1.02 }}
+                className="group rounded-2xl overflow-hidden bg-brand-brown/40 border border-brand-brown relative"
+              >
+                <div className="h-64 overflow-hidden relative">
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute top-4 left-4 bg-brand-accent text-brand-dark text-xs font-bold px-3 py-1 rounded-full uppercase">
+                    {item.type}
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="font-display text-xl font-bold text-white mb-2">{item.name}</h3>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-brand-light border-t border-brand-beige">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive ? 'bg-brand-beige text-brand-brown' : 'text-brand-dark hover:bg-brand-beige hover:text-brand-brown'
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-            <a 
-              href="https://www.foodpanda.ph/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block w-full text-center mt-4 bg-brand-brown text-white px-4 py-3 rounded-md hover:bg-brand-accent transition-colors font-medium"
-            >
-              Order Online
-            </a>
-          </div>
+      {/* Party Trays Emphasis - SALES FEATURE */}
+      <section className="py-24 px-4 bg-brand-primary relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-8 opacity-20 pointer-events-none">
+          <Gift className="w-64 h-64 text-white" />
         </div>
-      )}
-    </nav>
-  );
-}
-
-```
-
-## File: src/layouts/Layout.tsx
-```tsx
-
-import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { AnimatePresence, motion } from 'framer-motion';
-
-export default function Layout() {
-  const location = useLocation();
-
-  return (
-    <div className="flex flex-col min-h-screen bg-brand-light">
-      <Navbar />
-      <main className="flex-grow pt-20">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+        <div className="max-w-5xl mx-auto relative z-10 text-center bg-brand-dark p-12 md:p-16 rounded-3xl shadow-[12px_12px_0_0_#F59E0B] border-4 border-brand-dark">
+          <h2 className="font-display text-4xl md:text-6xl font-black text-white uppercase mb-6 leading-tight">
+            Perfect for <br/><span className="text-brand-accent">Groups & Events</span>
+          </h2>
+          <p className="text-xl text-brand-light opacity-90 max-w-2xl mx-auto mb-10">
+            Make your celebrations hassle-free! Our Party Trays are good for 12-15 pax. Choose from savory classics like Beef Caldereta, Crispy Kare-Kare, and massive Pancit Bilaos.
+          </p>
+          <Link 
+            to="/party-trays"
+            className="inline-block bg-brand-accent text-brand-dark px-10 py-5 rounded-2xl text-xl font-black uppercase tracking-wide hover:bg-white transition-colors duration-300 shadow-[6px_6px_0_0_#FFF]"
           >
-            <Outlet />
-          </motion.div>
-        </AnimatePresence>
-      </main>
-      <Footer />
+            Book Your Tray Now
+          </Link>
+        </div>
+      </section>
+
+      {/* Location / CTA Banner */}
+      <section className="py-24 bg-brand-beige px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-display text-4xl font-black text-brand-dark uppercase mb-8">Pull Up! We're Waiting For You.</h2>
+          <div className="bg-white p-8 rounded-2xl shadow-brutal border-2 border-brand-dark inline-block text-left mb-8">
+            <p className="text-brand-dark font-bold text-xl mb-4 flex items-center gap-2">
+              <span className="bg-brand-primary p-2 rounded-full text-white"><Utensils className="w-5 h-5"/></span>
+              Thirdy & Julios Commercial Building
+            </p>
+            <p className="text-brand-brown">Rizal Avenue, Poblacion, San Carlos City</p>
+            <p className="text-brand-brown text-sm mt-1 mb-6">Just after Manzon Bridge, across Pangasinan Doctors Hospital.</p>
+            <div className="h-px w-full bg-brand-beige mb-6"></div>
+            <p className="text-brand-dark font-bold">Hours: <span className="text-brand-primary">9 AM - 12 Midnight</span></p>
+          </div>
+          <div>
+            <Link to="/contact" className="text-brand-dark font-bold underline hover:text-brand-primary text-lg flex items-center justify-center gap-2">
+              Need Directions? Contact Us <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
 
 ```
 
-## File: src/pages/About.tsx
+## src/pages/Menu.tsx
 ```tsx
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
+const MENU_DATA: Record<string, {name: string, price: string, desc: string}[]> = {
+  meals: [
+    { name: 'Ultimate Breakfast', price: '₱299', desc: 'Signature meal with everything you love.' },
+    { name: 'Beef Salpicao', price: '₱200', desc: 'Garlicky beef sirloin with rice.' },
+    { name: 'Tapsilog (Carabeef)', price: '₱200', desc: 'Classic hit, cured perfectly.' },
+    { name: 'Pork Katsudon', price: '₱200', desc: 'Crispy cutlet in sweet savory egg sauce.' },
+  ],
+  pasta_snacks: [
+    { name: 'Carbonara', price: '₱200', desc: 'Creamy white sauce with bacon.' },
+    { name: 'Creamy Pesto Chicken', price: '₱220', desc: 'Rich pesto topped with chicken.' },
+    { name: 'Cheesy Beef Nachos', price: '₱180', desc: 'Massive platter to share with friends.' },
+    { name: 'Pizza Croffles', price: '₱180', desc: 'Savory cheesy pastry hybrid.' },
+  ],
+  drinks: [
+    { name: 'Spanish Latte', price: '₱135/155', desc: 'Sweet, creamy, rich espresso base.' },
+    { name: 'Java Chip Frappe', price: '₱150', desc: 'Ice blended mocha with chocolate chips.' },
+    { name: 'Pink Venom Smoothie', price: '₱170', desc: 'Fruity vibrant smoothie.' },
+    { name: 'Mango Matcha', price: '₱130', desc: 'Layered iced non-coffee perfection.' },
+  ],
+  party: [
+    { name: 'Pancit Canton Bilao', price: 'Ask us', desc: 'Small, Medium, Large to feed the whole gang.' },
+    { name: 'Beef Caldereta Tray', price: 'Ask us', desc: 'Good for 12-15 pax. Order in advance!' },
+    { name: 'Sushi Platter', price: 'Ask us', desc: 'Perfect party centerpiece.' },
+    { name: 'Chicken Cordon Bleu Tray', price: 'Ask us', desc: 'Golden fried chicken and cheese.' },
+  ]
+};
+
+export default function Menu() {
+  const [activeTab, setActiveTab] = useState('meals');
+
+  const tabs = [
+    { id: 'meals', label: 'Full Meals' },
+    { id: 'pasta_snacks', label: 'Pasta & Snacks' },
+    { id: 'drinks', label: 'Drinks & Coffee' },
+    { id: 'party', label: 'Party Trays' },
+  ];
+
+  return (
+    <div className="bg-brand-light min-h-screen pt-28 pb-20 font-sans">
+      
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
+        <h1 className="font-display text-5xl md:text-6xl font-black text-brand-dark uppercase tracking-tight mb-4">Our Menu</h1>
+        <p className="text-xl text-brand-brown font-medium max-w-2xl mx-auto">
+          Huge portions, bold flavors, endless caffeine. Pick your poison.
+        </p>
+      </div>
+
+      {/* Tabs */}
+      <div className="max-w-5xl mx-auto px-4 mb-12 flex flex-wrap justify-center gap-3">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-6 py-3 rounded-xl font-bold uppercase tracking-wide border-2 border-brand-dark transition-all ${
+              activeTab === tab.id 
+                ? 'bg-brand-primary text-white shadow-[4px_4px_0_0_#431407] -translate-y-1 -translate-x-1' 
+                : 'bg-white text-brand-dark hover:bg-brand-beige shadow-sm'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="max-w-5xl mx-auto px-4">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {MENU_DATA[activeTab].map((item: any, index: number) => (
+              <div 
+                key={index}
+                className="bg-white p-6 rounded-2xl border-2 border-brand-dark shadow-brutal hover:shadow-brutal-hover hover:translate-x-1 hover:translate-y-1 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-2 gap-4">
+                    <h3 className="font-display text-2xl font-bold text-brand-dark uppercase leading-tight">{item.name}</h3>
+                    <span className="bg-brand-accent text-brand-dark px-3 py-1 rounded-lg font-black text-sm whitespace-nowrap border border-brand-dark">
+                      {item.price}
+                    </span>
+                  </div>
+                  <p className="text-brand-brown/80 font-medium">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+        
+        <div className="mt-16 bg-brand-beige border-2 border-brand-dark p-8 rounded-2xl text-center shadow-[6px_6px_0_0_#EA580C]">
+            <h4 className="font-display text-2xl font-black uppercase text-brand-dark mb-2">Want the full list?</h4>
+            <p className="text-brand-brown font-medium mb-4">We have dozens of options in-store! From specialty sodas to 15+ different rice bowls.</p>
+            <p className="bg-white inline-block px-4 py-2 font-bold text-brand-dark border-2 border-brand-dark rounded-xl">Just pull up and check our in-store menu cards.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+```
+
+## src/pages/About.tsx
+```tsx
 export default function About() {
   return (
     <div className="bg-brand-light min-h-screen">
@@ -754,9 +698,8 @@ export default function About() {
 
 ```
 
-## File: src/pages/Contact.tsx
+## src/pages/Contact.tsx
 ```tsx
-
 import { MapPin, Mail, Clock, Phone } from 'lucide-react';
 
 export default function Contact() {
@@ -884,9 +827,8 @@ export default function Contact() {
 
 ```
 
-## File: src/pages/Gallery.tsx
+## src/pages/Gallery.tsx
 ```tsx
-
 const IMAGES = [
   { src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80", caption: "Modern Two-Storey Space" },
   { src: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=800&q=80", caption: "Cozy Interiors" },
@@ -927,378 +869,8 @@ export default function Gallery() {
 
 ```
 
-## File: src/pages/Home.tsx
+## src/pages/PartyTrays.tsx
 ```tsx
-
-import Hero from '../components/Hero';
-import { Coffee, Cake, Wifi, Star, MapPin, Clock, CreditCard } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-
-export default function Home() {
-  const features = [
-    {
-      icon: <Coffee className="h-8 w-8 text-brand-brown" />,
-      title: "Specialty Coffee",
-      description: "From our classic Coffee-based Frappes to Non-coffee Lattes, enjoy brews made with care."
-    },
-    {
-      icon: <Cake className="h-8 w-8 text-brand-brown" />,
-      title: "Diverse Menu",
-      description: "Rice meals, pasta, pastries, and party trays perfect for any craving."
-    },
-    {
-      icon: <Wifi className="h-8 w-8 text-brand-brown" />,
-      title: "Cozy & Connected",
-      description: "Free Wi-Fi, solar-powered operations, and a spacious second floor."
-    }
-  ];
-
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Hero />
-      
-      {/* Social Proof & Vibe Section */}
-      <section className="bg-brand-brown py-12 text-white text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
-            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
-                <div className="flex items-center gap-3 bg-brand-dark/30 px-6 py-4 rounded-lg backdrop-blur-sm">
-                    <Star className="h-8 w-8 text-yellow-400 fill-current" />
-                    <div className="text-left">
-                        <p className="font-bold text-2xl">Must Try</p>
-                        <p className="text-sm opacity-90">Café BrewsCo Specials</p>
-                    </div>
-                </div>
-                <div className="max-w-md">
-                    <p className="font-serif text-xl italic font-light">
-                        "Love is brewing at Café BrewsCo – come for the coffee, stay for the cozy vibes."
-                    </p>
-                </div>
-            </div>
-        </motion.div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-brand-cream">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-serif text-4xl font-bold text-brand-dark mb-4">Why Café BrewsCo?</h2>
-          <p className="text-brand-accent max-w-2xl mx-auto">
-            Beyond great coffee, we offer a space that feels like home.
-          </p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {features.map((feature, index) => (
-            <motion.div 
-              key={index} 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="text-center p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300 border border-brand-beige"
-            >
-              <div className="inline-block p-4 bg-brand-beige/30 rounded-full mb-6">
-                {feature.icon}
-              </div>
-              <h3 className="font-serif text-xl font-bold text-brand-dark mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Location & Payment Stripe */}
-      <section className="bg-brand-beige py-16">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div className="flex flex-col items-center">
-                    <MapPin className="h-8 w-8 text-brand-brown mb-4" />
-                    <h3 className="font-serif text-xl font-bold text-brand-dark mb-2">Visit Us</h3>
-                    <p className="text-brand-dark/80">Coastway Complex, Arellano St.<br/>Dagupan City</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <Clock className="h-8 w-8 text-brand-brown mb-4" />
-                    <h3 className="font-serif text-xl font-bold text-brand-dark mb-2">Opening Hours</h3>
-                    <p className="text-brand-dark/80">Daily: 9:00 AM – 10:00 PM</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <CreditCard className="h-8 w-8 text-brand-brown mb-4" />
-                    <h3 className="font-serif text-xl font-bold text-brand-dark mb-2">Payment Methods</h3>
-                    <p className="text-brand-dark/80">Cash • Debit/Credit Cards • E-wallets</p>
-                </div>
-            </div>
-        </motion.div>
-      </section>
-      
-      {/* CTA */}
-      <section className="py-20 bg-brand-brown text-white text-center">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto px-4"
-        >
-          <h2 className="font-serif text-4xl font-bold mb-6">Craving something sweet?</h2>
-          <p className="text-xl mb-8 opacity-90">Order our signature Mini Cakes or customize one for your special event.</p>
-          <div className="flex justify-center gap-4">
-            <Link to="/menu" className="bg-brand-beige text-brand-dark px-8 py-3 rounded-full font-bold hover:bg-white transition-colors">
-              Browse Menu
-            </Link>
-            <Link to="/contact" className="border-2 border-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-brand-dark transition-colors">
-              Inquire Now
-            </Link>
-          </div>
-        </motion.div>
-      </section>
-    </div>
-  );
-}
-
-```
-
-## File: src/pages/Menu.tsx
-```tsx
-
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
-
-const MENU_CATEGORIES = [
-  { id: 'breakfast', name: 'Breakfast & Rice Bowls' },
-  { id: 'appetizers', name: 'Appetizers & À la Carte' },
-  { id: 'pasta', name: 'Pasta' },
-  { id: 'noodles', name: 'Short Orders & Noodles' },
-  { id: 'pastries', name: 'Pastries & Sandwiches' },
-  { id: 'party-trays', name: 'Bilao & Party Trays' },
-  { id: 'coffee-lattes', name: 'Coffee Lattes' },
-  { id: 'non-coffee-lattes', name: 'Non-Coffee Lattes' },
-  { id: 'frappe', name: 'Frappe' },
-  { id: 'smoothies', name: 'Smoothies' },
-  { id: 'milktea', name: 'Milktea' },
-  { id: 'rsc', name: 'Rocksalt & Cheese' },
-  { id: 'refreshers', name: 'Refreshers & Mocktails' },
-  { id: 'addons', name: 'Add-ons' },
-];
-
-const MENU_ITEMS = {
-  'breakfast': [
-    { name: 'Ultimate Breakfast', price: '₱299', description: 'Our signature ultimate breakfast meal.', image: 'https://images.unsplash.com/photo-1533089862017-7c392454a86d?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Tapsilog (Carabeef)', price: 'starts at ₱200', description: 'Classic tapsilog with carabeef.', image: 'https://images.unsplash.com/photo-1536712399203-4c920c5722fc?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Longsilog', price: 'starts at ₱200', description: 'Longganisa, sinangag, and itlog.', image: 'https://images.unsplash.com/photo-1563861826-6b5ebcdfa88e?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Beef Salpicao', price: '₱200', description: 'Savory and garlicky beef sirloin.', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Beef Broccoli', price: '₱200', description: 'Tender beef and fresh broccoli.', image: 'https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Bangus a la Pobre', price: 'starts at ₱200', description: 'Fried milkfish topped with garlic bits.', image: 'https://images.unsplash.com/photo-1627308595229-7830f5c9c66e?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Breaded Chicken', price: 'starts at ₱200', description: 'Crispy fried breaded chicken.', image: 'https://images.unsplash.com/photo-1569058242253-92f92c31c615?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Bulgogi', price: 'starts at ₱200', description: 'Korean-style marinated beef.', image: 'https://images.unsplash.com/photo-1623853170709-3def9a139aa2?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Chicken Steak a la King', price: 'starts at ₱200', description: 'Chicken steak with creamy sauce.', image: 'https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Creamy Cream Dory', price: 'starts at ₱200', description: 'Cream dory fish in white sauce.', image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Kimchi & Luncheon Meat', price: 'starts at ₱200', description: 'Spicy kimchi paired with luncheon meat.', image: 'https://images.unsplash.com/photo-1600869502947-8dfcda2af365?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pork Katsudon', price: 'starts at ₱200', description: 'Breaded pork cutlet and egg.', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pork Sisig', price: 'starts at ₱200', description: 'Sizzling minced pork.', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Salisbury Steak', price: 'starts at ₱200', description: 'Beef patty topped with gravy.', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'appetizers': [
-    { name: 'Cheesy Beef Nachos', price: 'starts at ₱180', description: 'Crunchy nachos loaded with beef & cheese.', image: 'https://images.unsplash.com/photo-1513456852971-30cfa382c916?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Cheesy Potato Bacon', price: 'starts at ₱180', description: 'Potatoes topped with cheese and bacon.', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Cheese Rolls', price: 'starts at ₱150', description: 'Warm and gooey cheese rolls.', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Chicken Fingers', price: 'starts at ₱180', description: 'Crispy fried chicken strips.', image: 'https://images.unsplash.com/photo-1569058242253-92f92c31c615?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Fish & Chips', price: 'starts at ₱200', description: 'Classic battered fish with fries.', image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80' },
-    { name: 'French Fries', price: 'starts at ₱120', description: 'Crispy golden french fries.', image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Fries Overload', price: 'starts at ₱180', description: 'Fries topped with cheese, beef, and bacon.', image: 'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Calamari', price: 'starts at ₱200', description: 'Crispy fried squid rings.', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Fried Chicken Wings', price: 'starts at ₱180', description: 'Deep fried and flavorful wings.', image: 'https://images.unsplash.com/photo-1524114664604-cd8133cd6771?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Bangus Sisig', price: 'starts at ₱200', description: 'Sizzling shredded milkfish.', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Chicken Lollipop/Pop', price: 'starts at ₱180', description: 'Bite-sized chicken delights.', image: 'https://images.unsplash.com/photo-1569058242253-92f92c31c615?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Chicken Skin', price: 'starts at ₱150', description: 'Crunchy deep-fried chicken skin.', image: 'https://images.unsplash.com/photo-1627308595229-7830f5c9c66e?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Special Tofu', price: 'starts at ₱150', description: 'Crispy fried tofu with special sauce.', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'pasta': [
-    { name: 'Carbonara', price: 'starts at ₱200', description: 'Creamy white sauce with bacon.', image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Charlie Chan', price: 'starts at ₱200', description: 'Sweet and spicy Asian-style pasta.', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Creamy Pesto Chicken', price: 'starts at ₱220', description: 'Pesto sauce with grilled chicken.', image: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Spaghetti Meatballs', price: 'starts at ₱200', description: 'Classic red sauce with homemade meatballs.', image: 'https://images.unsplash.com/photo-1522906456132-ce0f585a214d?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Tuna & Mushroom', price: 'starts at ₱200', description: 'Savory tuna with mushrooms.', image: 'https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Lasagna', price: 'starts at ₱220', description: 'Layers of pasta, meat, and cheese.', image: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'noodles': [
-    { name: 'Pancit Bihon Guisado', price: 'starts at ₱180', description: 'Stir-fried rice noodles with veggies and meat.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pancit Canton', price: 'starts at ₱180', description: 'Stir-fried egg noodles.', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pancit Sotanghon', price: 'starts at ₱180', description: 'Stir-fried glass noodles.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Palabok', price: 'starts at ₱180', description: 'Noodles topped with rich shrimp sauce.', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pancit Ampute Layag', price: 'starts at ₱180', description: 'Local special noodle dish.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'pastries': [
-    { name: 'Flavoured Croffles', price: 'starts at ₱150', description: 'Blueberry, Strawberry, or Cookies & Cream.', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pizza Croffles', price: 'starts at ₱180', description: 'Savory pizza-flavored croffles.', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Clubhouse with Fries', price: 'starts at ₱200', description: 'Classic triple-decker sandwich with fries.', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Beefy Salpicao Wrap', price: 'starts at ₱200', description: 'Savory beef salpicao in a wrap.', image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'party-trays': [
-    { name: 'Bilaos (S / M / L)', price: 'Ask for Price', description: 'Pancit Bihon, Canton, Sotanghon, or Sisig.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Party Trays (12-15 pax)', price: 'Ask for Price', description: 'Buttered Chichoke, Beef & Mushroom, Beef Stroganoff... and more!', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'coffee-lattes': [
-    { name: 'Americano', price: '₱120 / ₱130', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1551024601-5629436bb5c1?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Cappuccino', price: '₱130 / ₱140', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Café Latte', price: '₱130 / ₱140', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1585494156145-1c60a4fe952b?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Caramel Macchiato', price: '₱135 / ₱160', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1485808191679-5f8c7c835569?auto=format&fit=crop&w=400&q=80' },
-    { name: 'French Vanilla', price: '₱135 / ₱160', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1570968992193-96ab60c397b9?auto=format&fit=crop&w=400&q=80' },
-    { name: 'White Mocha', price: '₱135 / ₱160', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1549826353-83321598f804?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Café Mocha', price: '₱135 / ₱150', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Spanish Latte', price: '₱135 / ₱155', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1560931560-619058b73a34?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Toasted Marshmallow / Dirty Matcha / Hazelnut / Macadamia / Popcorn / Crème Brûlée / Black Forest / Chocolate Cookie', price: '₱135 - ₱180', description: 'Specialty coffee lattes.', image: 'https://images.unsplash.com/photo-1553909489-cd47e59239e2?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'non-coffee-lattes': [
-    { name: 'Strawberry Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1571328003758-4a3921661729?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Blueberry Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1557989914-16075f92506e?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Matcha Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Ichigo Matcha / Mango Matcha', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1596700057088-725350ca96ea?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Cocoa Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Nutella Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Biscoff Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1629891041697-3f33664d50c7?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'frappe': [
-    { name: 'Java Chip / Caramel Vanilla / Dark Choco / Creamy Oreo / White Mocha / Choco Hazelnut / Macadamia / Coffee Jelly', price: '₱150 - ₱175', description: 'Coffee-based Frappe.', image: 'https://images.unsplash.com/photo-1530373239216-42518e6b4063?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'smoothies': [
-    { name: 'Creamy Melon / Creamy Avocado / Creamy Oreo / Strawberry Cheesecake / Blueberry Cheesecake / Mango Cheesecake / KitKat Matcha / Pink Venom', price: '₱120 - ₱170', description: 'Fruit and dessert-inspired smoothies.', image: 'https://images.unsplash.com/photo-1524316937517-1f4803b9f36f?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'milktea': [
-    { name: 'Milk Tea with Pearl / Tiger Milk Tea / Oreo Milk Tea / Wintermelon / Matcha / Milo Dinosaur', price: '₱100 - ₱130', description: 'Classic and modern milk teas.', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'rsc': [
-    { name: 'OG Milk Tea / Wintermelon / Matcha / Cocoa (Rocksalt & Cheese)', price: '₱130 / ₱145', description: 'Topped with premium Rocksalt & Cheese.', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'refreshers': [
-    { name: 'Lemon Special Coolers / Lemon Yakult / Lemon Yogurt / Apple Fruit Soda / Strawberry Soda / Blueberry Soda', price: '₱100 - ₱135', description: 'BrewsCo Refreshers.', image: 'https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Mocktails', price: '₱120 / ₱140', description: 'Green Lantern, Red Lingerie, Blue Moon, Mon-Chee Summer.', image: 'https://images.unsplash.com/photo-1623321588656-78229b9f7158?auto=format&fit=crop&w=400&q=80' }
-  ],
-  'addons': [
-    { name: 'Espresso Shot (₱60) / Whip Cream (₱30) / Pearl (₱30) / Rainbow Jelly (₱30) / Syrup (₱30) / Coffee Jelly (₱30) / Rock Salt & Cheese (₱40) / Cheese (₱30) / Convert to Oat Milk (+₱50)', price: 'Varies', description: 'Enhance your drink.', image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80' }
-  ]
-};
-
-export default function Menu() {
-  const categoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-
-  const scrollToCategory = (id: string) => {
-    const element = categoryRefs.current[id];
-    if (element) {
-      const offset = 100; // Height of the sticky header + some padding
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  return (
-    <div className="bg-brand-light min-h-screen pb-20">
-      {/* Header */}
-      <div className="bg-brand-brown py-16 text-center text-white">
-        <h1 className="font-serif text-4xl font-bold mb-4">Our Menu</h1>
-        <p className="opacity-90 max-w-2xl mx-auto px-4">
-          Discover our selection of handcrafted beverages, comfort food, and sweet treats.
-        </p>
-      </div>
-
-      <div className="sticky top-20 z-10 bg-brand-light/95 backdrop-blur-sm border-b border-brand-beige shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto py-4 gap-2 no-scrollbar">
-            {MENU_CATEGORIES.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => scrollToCategory(category.id)}
-                className="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white text-brand-dark hover:bg-brand-brown hover:text-white transition-colors border border-brand-beige"
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
-        {MENU_CATEGORIES.map((category) => (
-          <motion.div 
-            key={category.id} 
-            ref={el => { categoryRefs.current[category.id] = el }}
-            className="scroll-mt-32"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center gap-4 mb-8">
-              <h2 className="font-serif text-3xl font-bold text-brand-dark">{category.name}</h2>
-              <div className="h-px bg-brand-beige flex-grow"></div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-              {MENU_ITEMS[category.id as keyof typeof MENU_ITEMS]?.map((item, index) => (
-                <motion.div 
-                  key={index} 
-                  className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex gap-4 items-start border border-brand-beige/30 group"
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-brand-beige relative">
-                    <img 
-                      src={item.image} 
-                      alt={item.name} 
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="flex-grow min-w-0">
-                    <div className="flex justify-between items-start gap-2 mb-1">
-                      <h3 className="font-serif text-lg font-bold text-brand-dark leading-tight">{item.name}</h3>
-                      <span className="font-bold text-brand-brown text-sm whitespace-nowrap">{item.price}</span>
-                    </div>
-                    <p className="text-brand-dark/70 text-sm leading-relaxed line-clamp-2">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Note */}
-        <div className="mt-16 text-center text-brand-dark/60 text-sm bg-brand-beige/20 p-6 rounded-lg">
-          <p className="font-medium">* Prices and availability are subject to change without prior notice.</p>
-          <p>Please inform our staff of any food allergies or dietary requirements before ordering.</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-```
-
-## File: src/pages/PartyTrays.tsx
-```tsx
-
 import { Link } from 'react-router-dom';
 
 export default function PartyTrays() {
@@ -1362,3 +934,37 @@ export default function PartyTrays() {
 }
 
 ```
+
+## src/layouts/Layout.tsx
+```tsx
+import { Outlet, useLocation } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { AnimatePresence, motion } from 'framer-motion';
+
+export default function Layout() {
+  const location = useLocation();
+
+  return (
+    <div className="flex flex-col min-h-screen bg-brand-light">
+      <Navbar />
+      <main className="flex-grow pt-20">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+```
+

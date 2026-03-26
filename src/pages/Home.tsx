@@ -1,141 +1,143 @@
 import Hero from '../components/Hero';
-import { Coffee, Cake, Wifi, Star, MapPin, Clock, CreditCard } from 'lucide-react';
+import { Users, Wifi, Clock, Star, Gift, Utensils, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export default function Home() {
-  const features = [
+  const experiences = [
     {
-      icon: <Coffee className="h-8 w-8 text-brand-brown" />,
-      title: "Specialty Coffee",
-      description: "From our classic Coffee-based Frappes to Non-coffee Lattes, enjoy brews made with care."
+      icon: <Users className="w-8 h-8 text-brand-primary" />,
+      title: "Barkada Core",
+      desc: "Spacious seating designed for groups. Laugh, eat, and stay as long as you want."
     },
     {
-      icon: <Cake className="h-8 w-8 text-brand-brown" />,
-      title: "Diverse Menu",
-      description: "Rice meals, pasta, pastries, and party trays perfect for any craving."
+      icon: <Clock className="w-8 h-8 text-brand-accent" />,
+      title: "Late Night Hangs",
+      desc: "Open from 9 AM all the way to 12 Midnight for your late-night food & coffee cravings."
     },
     {
-      icon: <Wifi className="h-8 w-8 text-brand-brown" />,
-      title: "Cozy & Connected",
-      description: "Free Wi-Fi, solar-powered operations, and a spacious second floor."
+      icon: <Wifi className="w-8 h-8 text-brand-primary" />,
+      title: "Study & Work",
+      desc: "Free speedy WiFi, cozy corners on our second floor, and unlimited caffeine."
+    },
+    {
+      icon: <Star className="w-8 h-8 text-brand-accent" />,
+      title: "VIP Room",
+      desc: "Need privacy? Book our conference room for professional meetings or private parties."
     }
   ];
 
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Hero />
-      
-      {/* Social Proof & Vibe Section */}
-      <section className="bg-brand-brown py-12 text-white text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
-            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
-                <div className="flex items-center gap-3 bg-brand-dark/30 px-6 py-4 rounded-lg backdrop-blur-sm">
-                    <Star className="h-8 w-8 text-yellow-400 fill-current" />
-                    <div className="text-left">
-                        <p className="font-bold text-2xl">Must Try</p>
-                        <p className="text-sm opacity-90">Café BrewsCo Specials</p>
-                    </div>
-                </div>
-                <div className="max-w-md">
-                    <p className="font-serif text-xl italic font-light">
-                        "Love is brewing at Café BrewsCo – come for the coffee, stay for the cozy vibes."
-                    </p>
-                </div>
-            </div>
-        </motion.div>
-      </section>
+  const bestSellers = [
+    { name: "Spanish Latte", type: "Drink", img: "https://images.unsplash.com/photo-1560931560-619058b73a34?auto=format&fit=crop&w=600&q=80" },
+    { name: "Java Chip Frappe", type: "Frappe", img: "https://images.unsplash.com/photo-1530373239216-42518e6b4063?auto=format&fit=crop&w=600&q=80" },
+    { name: "Beef Salpicao", type: "Meal", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" },
+    { name: "Flavoured Croffles", type: "Pastry", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" }
+  ];
 
-      {/* Features Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-brand-cream">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-serif text-4xl font-bold text-brand-dark mb-4">Why Café BrewsCo?</h2>
-          <p className="text-brand-accent max-w-2xl mx-auto">
-            Beyond great coffee, we offer a space that feels like home.
-          </p>
-        </motion.div>
+  return (
+    <div className="bg-brand-light font-sans">
+      <Hero />
+
+      {/* Experience Section */}
+      <section className="py-24 px-4 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tight">Why People Come Here</h2>
+          <p className="mt-4 text-brand-brown font-medium text-lg">This is where you go with friends.</p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {features.map((feature, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {experiences.map((exp, i) => (
             <motion.div 
-              key={index} 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="text-center p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300 border border-brand-beige"
+              key={i}
+              whileHover={{ y: -8 }}
+              className="bg-white p-8 rounded-2xl border-2 border-brand-dark shadow-brutal transition-transform"
             >
-              <div className="inline-block p-4 bg-brand-beige/30 rounded-full mb-6">
-                {feature.icon}
+              <div className="bg-brand-beige w-16 h-16 rounded-xl flex items-center justify-center mb-6 border border-brand-dark">
+                {exp.icon}
               </div>
-              <h3 className="font-serif text-xl font-bold text-brand-dark mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="font-display text-2xl font-bold text-brand-dark mb-3">{exp.title}</h3>
+              <p className="text-brand-brown/80 leading-relaxed">{exp.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Location & Payment Stripe */}
-      <section className="bg-brand-beige py-16">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div className="flex flex-col items-center">
-                    <MapPin className="h-8 w-8 text-brand-brown mb-4" />
-                    <h3 className="font-serif text-xl font-bold text-brand-dark mb-2">Visit Us</h3>
-                    <p className="text-brand-dark/80">Coastway Complex, Arellano St.<br/>Dagupan City</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <Clock className="h-8 w-8 text-brand-brown mb-4" />
-                    <h3 className="font-serif text-xl font-bold text-brand-dark mb-2">Opening Hours</h3>
-                    <p className="text-brand-dark/80">Daily: 9:00 AM – 10:00 PM</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <CreditCard className="h-8 w-8 text-brand-brown mb-4" />
-                    <h3 className="font-serif text-xl font-bold text-brand-dark mb-2">Payment Methods</h3>
-                    <p className="text-brand-dark/80">Cash • Debit/Credit Cards • E-wallets</p>
-                </div>
+      {/* Featured Menu / Best Sellers */}
+      <section className="py-24 bg-brand-dark text-brand-light px-4 border-y-4 border-brand-primary">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+              <h2 className="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tight">Crowd Favorites</h2>
+              <p className="mt-4 text-brand-accent font-medium text-lg">You can never go wrong with these Bestsellers.</p>
             </div>
-        </motion.div>
-      </section>
-      
-      {/* CTA */}
-      <section className="py-20 bg-brand-brown text-white text-center">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto px-4"
-        >
-          <h2 className="font-serif text-4xl font-bold mb-6">Craving something sweet?</h2>
-          <p className="text-xl mb-8 opacity-90">Order our signature Mini Cakes or customize one for your special event.</p>
-          <div className="flex justify-center gap-4">
-            <Link to="/menu" className="bg-brand-beige text-brand-dark px-8 py-3 rounded-full font-bold hover:bg-white transition-colors">
-              Browse Menu
-            </Link>
-            <Link to="/contact" className="border-2 border-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-brand-dark transition-colors">
-              Inquire Now
+            <Link to="/menu" className="bg-brand-primary text-white font-bold py-3 px-8 rounded-xl border-2 border-transparent hover:border-white transition-all shadow-[4px_4px_0_0_#FFF]">
+              See Full Menu
             </Link>
           </div>
-        </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {bestSellers.map((item, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 1.02 }}
+                className="group rounded-2xl overflow-hidden bg-brand-brown/40 border border-brand-brown relative"
+              >
+                <div className="h-64 overflow-hidden relative">
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute top-4 left-4 bg-brand-accent text-brand-dark text-xs font-bold px-3 py-1 rounded-full uppercase">
+                    {item.type}
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="font-display text-xl font-bold text-white mb-2">{item.name}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Party Trays Emphasis - SALES FEATURE */}
+      <section className="py-24 px-4 bg-brand-primary relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-8 opacity-20 pointer-events-none">
+          <Gift className="w-64 h-64 text-white" />
+        </div>
+        <div className="max-w-5xl mx-auto relative z-10 text-center bg-brand-dark p-12 md:p-16 rounded-3xl shadow-[12px_12px_0_0_#F59E0B] border-4 border-brand-dark">
+          <h2 className="font-display text-4xl md:text-6xl font-black text-white uppercase mb-6 leading-tight">
+            Perfect for <br/><span className="text-brand-accent">Groups & Events</span>
+          </h2>
+          <p className="text-xl text-brand-light opacity-90 max-w-2xl mx-auto mb-10">
+            Make your celebrations hassle-free! Our Party Trays are good for 12-15 pax. Choose from savory classics like Beef Caldereta, Crispy Kare-Kare, and massive Pancit Bilaos.
+          </p>
+          <Link 
+            to="/party-trays"
+            className="inline-block bg-brand-accent text-brand-dark px-10 py-5 rounded-2xl text-xl font-black uppercase tracking-wide hover:bg-white transition-colors duration-300 shadow-[6px_6px_0_0_#FFF]"
+          >
+            Book Your Tray Now
+          </Link>
+        </div>
+      </section>
+
+      {/* Location / CTA Banner */}
+      <section className="py-24 bg-brand-beige px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-display text-4xl font-black text-brand-dark uppercase mb-8">Pull Up! We're Waiting For You.</h2>
+          <div className="bg-white p-8 rounded-2xl shadow-brutal border-2 border-brand-dark inline-block text-left mb-8">
+            <p className="text-brand-dark font-bold text-xl mb-4 flex items-center gap-2">
+              <span className="bg-brand-primary p-2 rounded-full text-white"><Utensils className="w-5 h-5"/></span>
+              Thirdy & Julios Commercial Building
+            </p>
+            <p className="text-brand-brown">Rizal Avenue, Poblacion, San Carlos City</p>
+            <p className="text-brand-brown text-sm mt-1 mb-6">Just after Manzon Bridge, across Pangasinan Doctors Hospital.</p>
+            <div className="h-px w-full bg-brand-beige mb-6"></div>
+            <p className="text-brand-dark font-bold">Hours: <span className="text-brand-primary">9 AM - 12 Midnight</span></p>
+          </div>
+          <div>
+            <Link to="/contact" className="text-brand-dark font-bold underline hover:text-brand-primary text-lg flex items-center justify-center gap-2">
+              Need Directions? Contact Us <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

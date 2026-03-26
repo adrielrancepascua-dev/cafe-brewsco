@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Coffee } from 'lucide-react';
+import { Menu as MenuIcon, X, Coffee } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Navbar() {
@@ -10,83 +10,82 @@ export default function Navbar() {
     { name: 'About', href: '/about' },
     { name: 'Menu', href: '/menu' },
     { name: 'Party Trays', href: '/party-trays' },
-    { name: 'Gallery', href: '/gallery' },
     { name: 'Contact', href: '/contact' },
   ];
 
   return (
-    <nav className="bg-brand-beige/90 backdrop-blur-sm fixed w-full z-50 shadow-sm font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
-          <div className="flex-shrink-0 flex items-center gap-2">
-            <Link to="/" className="flex items-center gap-2">
-              <Coffee className="h-8 w-8 text-brand-brown" />
-              <span className="font-serif text-2xl font-bold text-brand-dark">Café BrewsCo</span>
-            </Link>
+    <nav className="bg-brand-light/95 flex backdrop-blur-md fixed w-full z-50 shadow-sm border-b-2 border-brand-dark font-sans h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="bg-brand-primary p-2 rounded-lg shadow-[3px_3px_0_0_#431407] group-hover:shadow-[1px_1px_0_0_#431407] group-hover:translate-x-[2px] group-hover:translate-y-[2px] transition-all border border-brand-dark">
+            <Coffee className="h-6 w-6 text-white" />
           </div>
-          
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 ${
-                    isActive ? 'text-brand-brown underline underline-offset-4' : 'text-brand-dark hover:text-brand-brown'
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-            <a 
-              href="https://www.foodpanda.ph/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-brand-brown text-white px-4 py-2 rounded-full hover:bg-brand-accent transition-colors text-sm font-medium"
+          <span className="font-display text-2xl font-black text-brand-dark uppercase tracking-tight">Café BrewsCo</span>
+        </Link>
+        
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center space-x-6">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className={({ isActive }) =>
+                `text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
+                  isActive ? 'text-brand-primary border-b-2 border-brand-primary' : 'text-brand-dark hover:text-brand-primary'
+                }`
+              }
             >
-              Order Online
-            </a>
-          </div>
+              {item.name}
+            </NavLink>
+          ))}
+          <a 
+            href="https://www.foodpanda.ph/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-brand-dark text-white px-6 py-2 rounded-lg border-2 border-brand-dark hover:bg-brand-primary hover:border-brand-primary transition-all text-sm font-bold uppercase shadow-[4px_4px_0_0_#EA580C]"
+          >
+            Order Delivery
+          </a>
+        </div>
 
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-brand-dark hover:text-brand-brown focus:outline-none"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+        {/* Mobile menu toggle */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-brand-dark p-2 bg-brand-beige border-2 border-brand-dark rounded-lg shadow-[3px_3px_0_0_#431407]"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu panel */}
       {isOpen && (
-        <div className="md:hidden bg-brand-light border-t border-brand-beige">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive ? 'bg-brand-beige text-brand-brown' : 'text-brand-dark hover:bg-brand-beige hover:text-brand-brown'
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-            <a 
-              href="https://www.foodpanda.ph/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block w-full text-center mt-4 bg-brand-brown text-white px-4 py-3 rounded-md hover:bg-brand-accent transition-colors font-medium"
+        <div className="absolute top-20 left-0 w-full bg-brand-light border-b-4 border-brand-dark shadow-xl md:hidden px-4 py-6 flex flex-col gap-4">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-xl border-2 border-brand-dark text-center font-bold uppercase ${
+                  isActive ? 'bg-brand-primary text-white shadow-brutal' : 'bg-white text-brand-dark hover:bg-brand-beige shadow-sm'
+                }`
+              }
             >
-              Order Online
-            </a>
-          </div>
+              {item.name}
+            </NavLink>
+          ))}
+          <a 
+            href="https://www.foodpanda.ph/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block text-center mt-4 bg-brand-dark text-brand-accent border-2 border-brand-dark px-4 py-4 rounded-xl font-black uppercase text-lg"
+          >
+            Order Delivery Now
+          </a>
         </div>
       )}
     </nav>

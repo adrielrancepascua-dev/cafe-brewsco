@@ -2,107 +2,118 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const MENU_CATEGORIES = [
-  { id: 'coffee', name: 'Coffee' },
-  { id: 'non-coffee', name: 'Non-Coffee' },
-  { id: 'refreshers', name: 'Refreshers' },
-  { id: 'ice-blended', name: 'Ice Blended' },
-  { id: 'matcha', name: 'Matcha & Hojicha' },
-  { id: 'pastries', name: 'Pastries' },
-  { id: 'cakes', name: 'Mini Cakes' },
-  { id: 'custom-cakes', name: 'Customized Cakes' },
+  { id: 'breakfast', name: 'Breakfast & Rice Bowls' },
+  { id: 'appetizers', name: 'Appetizers & À la Carte' },
   { id: 'pasta', name: 'Pasta' },
-  { id: 'breakfast', name: 'All Day Breakfast' },
-  { id: 'snacks', name: 'Snacks' },
+  { id: 'noodles', name: 'Short Orders & Noodles' },
+  { id: 'pastries', name: 'Pastries & Sandwiches' },
+  { id: 'party-trays', name: 'Bilao & Party Trays' },
+  { id: 'coffee-lattes', name: 'Coffee Lattes' },
+  { id: 'non-coffee-lattes', name: 'Non-Coffee Lattes' },
+  { id: 'frappe', name: 'Frappe' },
+  { id: 'smoothies', name: 'Smoothies' },
+  { id: 'milktea', name: 'Milktea' },
+  { id: 'rsc', name: 'Rocksalt & Cheese' },
+  { id: 'refreshers', name: 'Refreshers & Mocktails' },
+  { id: 'addons', name: 'Add-ons' },
 ];
 
 const MENU_ITEMS = {
-  coffee: [
-    { name: 'Americano', price: '₱185', description: '16oz. Black coffee brewed with hot water.', image: 'https://images.unsplash.com/photo-1551024601-5629436bb5c1?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Café Latte', price: '₱200', description: '16oz. Espresso topped with steamed milk.', image: 'https://images.unsplash.com/photo-1585494156145-1c60a4fe952b?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Spanish Latte', price: 'starts at ₱215', description: '16oz. Creamy latte with sweetened milk.', image: 'https://images.unsplash.com/photo-1570968992193-96ab60c397b9?auto=format&fit=crop&w=400&q=80' },
-    { name: 'White Chocolate Mocha', price: 'starts at ₱170', description: '16oz. Espresso blended with white-chocolate sauce.', image: 'https://images.unsplash.com/photo-1549826353-83321598f804?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Biscoff Latte', price: 'starts at ₱270', description: '16oz. Coffee infused with caramelised biscuit flavour.', image: 'https://images.unsplash.com/photo-1629891041697-3f33664d50c7?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Caramel Macchiato', price: 'starts at ₱245', description: '16oz. Espresso layered with steamed milk and caramel.', image: 'https://images.unsplash.com/photo-1485808191679-5f8c7c835569?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Sea Salt Latte (Iced)', price: 'starts at ₱245', description: 'Iced latte topped with sea-salt foam.', image: 'https://images.unsplash.com/photo-1553909489-cd47e59239e2?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Einspanner Latte (Iced)', price: 'starts at ₱210', description: 'Iced latte with whipped cream.', image: 'https://images.unsplash.com/photo-1557989914-16075f92506e?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Mocha (Iced)', price: 'starts at ₱245', description: 'Iced chocolate-espresso drink.', image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Dirty Horchata (Iced)', price: 'starts at ₱230', description: 'Cinnamon-flavoured horchata with espresso.', image: 'https://images.unsplash.com/photo-1610452664962-d9db4848d56b?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Cereal Latte (Iced)', price: 'starts at ₱260', description: 'Iced latte with cereal-milk flavour.', image: 'https://images.unsplash.com/photo-1618215578799-b1d83506ecb6?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Quattro Leche (Iced)', price: 'starts at ₱260', description: 'Sweet iced latte inspired by cuatro-leches cake.', image: 'https://images.unsplash.com/photo-1517701604599-bb29b5dd7359?auto=format&fit=crop&w=400&q=80' },
+  'breakfast': [
+    { name: 'Ultimate Breakfast', price: '₱299', description: 'Our signature ultimate breakfast meal.', image: 'https://images.unsplash.com/photo-1533089862017-7c392454a86d?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Tapsilog (Carabeef)', price: 'starts at ₱200', description: 'Classic tapsilog with carabeef.', image: 'https://images.unsplash.com/photo-1536712399203-4c920c5722fc?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Longsilog', price: 'starts at ₱200', description: 'Longganisa, sinangag, and itlog.', image: 'https://images.unsplash.com/photo-1563861826-6b5ebcdfa88e?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Beef Salpicao', price: '₱200', description: 'Savory and garlicky beef sirloin.', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Beef Broccoli', price: '₱200', description: 'Tender beef and fresh broccoli.', image: 'https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Bangus a la Pobre', price: 'starts at ₱200', description: 'Fried milkfish topped with garlic bits.', image: 'https://images.unsplash.com/photo-1627308595229-7830f5c9c66e?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Breaded Chicken', price: 'starts at ₱200', description: 'Crispy fried breaded chicken.', image: 'https://images.unsplash.com/photo-1569058242253-92f92c31c615?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Bulgogi', price: 'starts at ₱200', description: 'Korean-style marinated beef.', image: 'https://images.unsplash.com/photo-1623853170709-3def9a139aa2?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Chicken Steak a la King', price: 'starts at ₱200', description: 'Chicken steak with creamy sauce.', image: 'https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Creamy Cream Dory', price: 'starts at ₱200', description: 'Cream dory fish in white sauce.', image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Kimchi & Luncheon Meat', price: 'starts at ₱200', description: 'Spicy kimchi paired with luncheon meat.', image: 'https://images.unsplash.com/photo-1600869502947-8dfcda2af365?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Pork Katsudon', price: 'starts at ₱200', description: 'Breaded pork cutlet and egg.', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Pork Sisig', price: 'starts at ₱200', description: 'Sizzling minced pork.', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Salisbury Steak', price: 'starts at ₱200', description: 'Beef patty topped with gravy.', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80' }
   ],
-  'non-coffee': [
-    { name: 'Strawberry Milk', price: '₱200', description: '16oz. Creamy strawberry milk drink.', image: 'https://images.unsplash.com/photo-1571328003758-4a3921661729?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Ube Milk with Salted Cream', price: '₱230', description: '16oz. Ube milk topped with salted cream.', image: 'https://images.unsplash.com/photo-1552591637-29332e35327e?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Creamy Lemonade', price: '₱230', description: '16oz. Lemonade blended with cream.', image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Strawberry Lychee Milk', price: '₱215', description: '16oz. Milk drink with strawberry and lychee.', image: 'https://images.unsplash.com/photo-1629193751717-3844f2e96030?auto=format&fit=crop&w=400&q=80' },
+  'appetizers': [
+    { name: 'Cheesy Beef Nachos', price: 'starts at ₱180', description: 'Crunchy nachos loaded with beef & cheese.', image: 'https://images.unsplash.com/photo-1513456852971-30cfa382c916?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Cheesy Potato Bacon', price: 'starts at ₱180', description: 'Potatoes topped with cheese and bacon.', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Cheese Rolls', price: 'starts at ₱150', description: 'Warm and gooey cheese rolls.', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Chicken Fingers', price: 'starts at ₱180', description: 'Crispy fried chicken strips.', image: 'https://images.unsplash.com/photo-1569058242253-92f92c31c615?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Fish & Chips', price: 'starts at ₱200', description: 'Classic battered fish with fries.', image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80' },
+    { name: 'French Fries', price: 'starts at ₱120', description: 'Crispy golden french fries.', image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Fries Overload', price: 'starts at ₱180', description: 'Fries topped with cheese, beef, and bacon.', image: 'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Calamari', price: 'starts at ₱200', description: 'Crispy fried squid rings.', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Fried Chicken Wings', price: 'starts at ₱180', description: 'Deep fried and flavorful wings.', image: 'https://images.unsplash.com/photo-1524114664604-cd8133cd6771?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Bangus Sisig', price: 'starts at ₱200', description: 'Sizzling shredded milkfish.', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Chicken Lollipop/Pop', price: 'starts at ₱180', description: 'Bite-sized chicken delights.', image: 'https://images.unsplash.com/photo-1569058242253-92f92c31c615?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Chicken Skin', price: 'starts at ₱150', description: 'Crunchy deep-fried chicken skin.', image: 'https://images.unsplash.com/photo-1627308595229-7830f5c9c66e?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Special Tofu', price: 'starts at ₱150', description: 'Crispy fried tofu with special sauce.', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80' }
   ],
-  refreshers: [
-    { name: 'Strawberry Ade', price: '₱190', description: '16oz. Sparkling strawberry drink.', image: 'https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Mango Calamansi Tea Ade', price: '₱230', description: '16oz. Mango-calamansi iced tea.', image: 'https://images.unsplash.com/photo-1623321588656-78229b9f7158?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Apple Peach Chia Black Tea', price: '₱215', description: '16oz. Black tea with apple, peach and chia seeds.', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80' },
+  'pasta': [
+    { name: 'Carbonara', price: 'starts at ₱200', description: 'Creamy white sauce with bacon.', image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Charlie Chan', price: 'starts at ₱200', description: 'Sweet and spicy Asian-style pasta.', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Creamy Pesto Chicken', price: 'starts at ₱220', description: 'Pesto sauce with grilled chicken.', image: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Spaghetti Meatballs', price: 'starts at ₱200', description: 'Classic red sauce with homemade meatballs.', image: 'https://images.unsplash.com/photo-1522906456132-ce0f585a214d?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Tuna & Mushroom', price: 'starts at ₱200', description: 'Savory tuna with mushrooms.', image: 'https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Lasagna', price: 'starts at ₱220', description: 'Layers of pasta, meat, and cheese.', image: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=400&q=80' }
   ],
-  'ice-blended': [
-    { name: 'Java Chip', price: '₱260', description: '22oz. Blended coffee with chocolate chips.', image: 'https://images.unsplash.com/photo-1530373239216-42518e6b4063?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Caramel Macchiato Blended', price: '₱260', description: '22oz. Ice-blended caramel macchiato.', image: 'https://images.unsplash.com/photo-1626075908226-9d82121e7805?auto=format&fit=crop&w=400&q=80' },
-    { name: 'White Chocolate Mocha Blended', price: '₱260', description: '22oz. Ice-blended white-chocolate mocha.', image: 'https://images.unsplash.com/photo-1598284568600-474087e50529?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Biscoff Ice-Blended', price: '₱285', description: '22oz. Non-coffee Biscoff flavoured frappé.', image: 'https://images.unsplash.com/photo-1605333501725-7264a7c067e7?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Chocolate Chip Ice-Blended', price: '₱215', description: '22oz. Non-coffee chocolate-chip frappé.', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Oreo Cream Ice-Blended', price: '₱255', description: '22oz. Non-coffee Oreo-flavoured ice-blended drink.', image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Strawberry Cream Ice-Blended', price: '₱255', description: '22oz. Non-coffee strawberry frappé with cream.', image: 'https://images.unsplash.com/photo-1524316937517-1f4803b9f36f?auto=format&fit=crop&w=400&q=80' },
+  'noodles': [
+    { name: 'Pancit Bihon Guisado', price: 'starts at ₱180', description: 'Stir-fried rice noodles with veggies and meat.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Pancit Canton', price: 'starts at ₱180', description: 'Stir-fried egg noodles.', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Pancit Sotanghon', price: 'starts at ₱180', description: 'Stir-fried glass noodles.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Palabok', price: 'starts at ₱180', description: 'Noodles topped with rich shrimp sauce.', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Pancit Ampute Layag', price: 'starts at ₱180', description: 'Local special noodle dish.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' }
   ],
-  matcha: [
-    { name: 'Classic Matcha Latte', price: 'starts at ₱250', description: '16oz. Creamy matcha latte.', image: 'https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Matcha Einspanner', price: 'starts at ₱300', description: 'Matcha drink topped with cream.', image: 'https://images.unsplash.com/photo-1596700057088-725350ca96ea?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Matcha Float', price: 'starts at ₱330', description: 'Matcha latte topped with vanilla ice cream.', image: 'https://images.unsplash.com/photo-1549603058-2041db93949f?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Banana Pudding Matcha', price: 'starts at ₱330', description: '12oz-16oz. Matcha latte with banana pudding.', image: 'https://images.unsplash.com/photo-1582650080643-2cb2d0af4978?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Classic Hojicha Latte', price: '₱290', description: '12oz. Roasted green-tea latte.', image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Hojicha Einspanner', price: '₱275', description: '12oz. Hojicha latte topped with cream.', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80' },
+  'pastries': [
+    { name: 'Flavoured Croffles', price: 'starts at ₱150', description: 'Blueberry, Strawberry, or Cookies & Cream.', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Pizza Croffles', price: 'starts at ₱180', description: 'Savory pizza-flavored croffles.', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Clubhouse with Fries', price: 'starts at ₱200', description: 'Classic triple-decker sandwich with fries.', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Beefy Salpicao Wrap', price: 'starts at ₱200', description: 'Savory beef salpicao in a wrap.', image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=400&q=80' }
   ],
-  pastries: [
-    { name: 'Cinnamon Roll', price: 'starts at ₱100', description: 'Sweet spiral-shaped pastry.', image: 'https://images.unsplash.com/photo-1509365465984-133651334e0f?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Cookies', price: 'starts at ₱100', description: 'Assorted cookies (80g).', image: 'https://images.unsplash.com/photo-1499636138143-bd63ea59436a?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Cream Cheese Garlic Bread', price: '₱200', description: 'Savoury bread with cream cheese and garlic.', image: 'https://images.unsplash.com/photo-1619531038896-1875152cc596?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Crookie', price: '₱280', description: 'Hybrid cookie baked in a croissant.', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pain Au Chocolat', price: '₱190', description: 'Flaky pastry filled with chocolate.', image: 'https://images.unsplash.com/photo-1529580434440-ad4ccdb8303f?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Dubai Chewy Cookie', price: '₱155', description: 'Pistachio chewy cookie.', image: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Croissant', price: '₱140', description: 'Buttery croissant.', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80' },
+  'party-trays': [
+    { name: 'Bilaos (S / M / L)', price: 'Ask for Price', description: 'Pancit Bihon, Canton, Sotanghon, or Sisig.', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Party Trays (12-15 pax)', price: 'Ask for Price', description: 'Buttered Chichoke, Beef & Mushroom, Beef Stroganoff... and more!', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80' }
   ],
-  cakes: [
-    { name: 'Carrot Walnut Cake', price: '₱180', description: '3-inch mini carrot cake with cream cheese.', image: 'https://images.unsplash.com/photo-1509460592788-5136815332f1?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Blueberry Cheesecake', price: '₱200', description: '3-inch mini cheesecake with blueberry topping.', image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Red Velvet', price: '₱170', description: 'Mini red-velvet cake with cream cheese.', image: 'https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Chocolate Cake', price: '₱170', description: '3-inch mini chocolate cake.', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Burnt Basque Cheesecake', price: '₱185', description: 'Mini Basque-style cheesecake.', image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Chocolate Burnt Basque', price: '₱200', description: 'Chocolate Basque cheesecake.', image: 'https://images.unsplash.com/photo-1562747376-78ab3a0889c3?auto=format&fit=crop&w=400&q=80' },
+  'coffee-lattes': [
+    { name: 'Americano', price: '₱120 / ₱130', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1551024601-5629436bb5c1?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Cappuccino', price: '₱130 / ₱140', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Café Latte', price: '₱130 / ₱140', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1585494156145-1c60a4fe952b?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Caramel Macchiato', price: '₱135 / ₱160', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1485808191679-5f8c7c835569?auto=format&fit=crop&w=400&q=80' },
+    { name: 'French Vanilla', price: '₱135 / ₱160', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1570968992193-96ab60c397b9?auto=format&fit=crop&w=400&q=80' },
+    { name: 'White Mocha', price: '₱135 / ₱160', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1549826353-83321598f804?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Café Mocha', price: '₱135 / ₱150', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Spanish Latte', price: '₱135 / ₱155', description: 'Hot 12oz. / Iced 16oz.', image: 'https://images.unsplash.com/photo-1560931560-619058b73a34?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Toasted Marshmallow / Dirty Matcha / Hazelnut / Macadamia / Popcorn / Crème Brûlée / Black Forest / Chocolate Cookie', price: '₱135 - ₱180', description: 'Specialty coffee lattes.', image: 'https://images.unsplash.com/photo-1553909489-cd47e59239e2?auto=format&fit=crop&w=400&q=80' }
   ],
-  'custom-cakes': [
-     { name: 'Bento Cake', price: '₱500', description: '4-inch customised cake; note your dedication (max 25 characters).', image: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=400&q=80' },
-     { name: '5-inch Cake', price: '₱785', description: 'Customised 5-inch chocolate cake; dedication up to 25 characters.', image: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=400&q=80' },
+  'non-coffee-lattes': [
+    { name: 'Strawberry Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1571328003758-4a3921661729?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Blueberry Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1557989914-16075f92506e?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Matcha Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Ichigo Matcha / Mango Matcha', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1596700057088-725350ca96ea?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Cocoa Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Nutella Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Biscoff Latte', price: '₱130 - ₱180', description: 'Iced non-coffee latte.', image: 'https://images.unsplash.com/photo-1629891041697-3f33664d50c7?auto=format&fit=crop&w=400&q=80' }
   ],
-  pasta: [
-    { name: 'Truffle Pasta', price: '₱385', description: 'Creamy truffle pasta for 1-2 persons.', image: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Bolognese Pasta', price: '₱315', description: 'Meat-sauce pasta for 1-2 persons.', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Salsiccia Pasta', price: '₱330', description: 'Sausage-infused pasta for 1-2 persons.', image: 'https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&w=400&q=80' },
+  'frappe': [
+    { name: 'Java Chip / Caramel Vanilla / Dark Choco / Creamy Oreo / White Mocha / Choco Hazelnut / Macadamia / Coffee Jelly', price: '₱150 - ₱175', description: 'Coffee-based Frappe.', image: 'https://images.unsplash.com/photo-1530373239216-42518e6b4063?auto=format&fit=crop&w=400&q=80' }
   ],
-  breakfast: [
-    { name: 'Beef Tapa', price: 'starts at ₱230', description: 'Beef tapa with egg and garlic rice.', image: 'https://images.unsplash.com/photo-1533089862017-7c392454a86d?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Pork Tocino', price: 'starts at ₱230', description: 'Tocino with egg and garlic rice.', image: 'https://images.unsplash.com/photo-1536712399203-4c920c5722fc?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Bacon', price: 'starts at ₱250', description: 'Bacon with egg and garlic rice.', image: 'https://images.unsplash.com/photo-1638848775267-8e65e640b3c6?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Spam', price: 'starts at ₱260', description: 'Spam with egg and garlic rice.', image: 'https://images.unsplash.com/photo-1600869502947-8dfcda2af365?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Adobo Flakes', price: 'starts at ₱245', description: 'Adobo flakes with egg and garlic rice.', image: 'https://images.unsplash.com/photo-1605335029322-6839cf9e3437?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Skinless Longganisa', price: 'starts at ₱215', description: 'Longganisa with egg and garlic rice.', image: 'https://images.unsplash.com/photo-1563861826-6b5ebcdfa88e?auto=format&fit=crop&w=400&q=80' },
-    { name: 'American Breakfast', price: 'starts at ₱315', description: 'Waffles with eggs and bacon.', image: 'https://images.unsplash.com/photo-1533089862017-7c392454a86d?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Waffle', price: 'starts at ₱215', description: 'Waffle served with butter and syrup.', image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=400&q=80' },
+  'smoothies': [
+    { name: 'Creamy Melon / Creamy Avocado / Creamy Oreo / Strawberry Cheesecake / Blueberry Cheesecake / Mango Cheesecake / KitKat Matcha / Pink Venom', price: '₱120 - ₱170', description: 'Fruit and dessert-inspired smoothies.', image: 'https://images.unsplash.com/photo-1524316937517-1f4803b9f36f?auto=format&fit=crop&w=400&q=80' }
   ],
-  snacks: [
-    { name: 'Four Cheese Flatbread', price: '₱215', description: 'Flatbread topped with four cheeses.', image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Mozzarella Sticks', price: '₱250', description: 'Five pieces of fried mozzarella sticks.', image: 'https://images.unsplash.com/photo-1531749668029-2db88e4276c7?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Beef Nachos', price: '₱370', description: 'Nachos platter for 2-3 persons.', image: 'https://images.unsplash.com/photo-1513456852971-30cfa382c916?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Beef Quesadilla', price: '₱200', description: 'Three-piece beef quesadilla.', image: 'https://images.unsplash.com/photo-1579992324022-b2c4be2b9bfa?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Grilled Cheese', price: '₱260', description: 'Grilled sourdough cheese sandwich.', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Ham & Cheese Toastie', price: '₱285', description: 'Toasted sourdough with ham and cheese.', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Bacon Parmesan Fries', price: '₱230', description: 'Fries topped with bacon and Parmesan.', image: 'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=400&q=80' },
+  'milktea': [
+    { name: 'Milk Tea with Pearl / Tiger Milk Tea / Oreo Milk Tea / Wintermelon / Matcha / Milo Dinosaur', price: '₱100 - ₱130', description: 'Classic and modern milk teas.', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80' }
   ],
+  'rsc': [
+    { name: 'OG Milk Tea / Wintermelon / Matcha / Cocoa (Rocksalt & Cheese)', price: '₱130 / ₱145', description: 'Topped with premium Rocksalt & Cheese.', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80' }
+  ],
+  'refreshers': [
+    { name: 'Lemon Special Coolers / Lemon Yakult / Lemon Yogurt / Apple Fruit Soda / Strawberry Soda / Blueberry Soda', price: '₱100 - ₱135', description: 'BrewsCo Refreshers.', image: 'https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Mocktails', price: '₱120 / ₱140', description: 'Green Lantern, Red Lingerie, Blue Moon, Mon-Chee Summer.', image: 'https://images.unsplash.com/photo-1623321588656-78229b9f7158?auto=format&fit=crop&w=400&q=80' }
+  ],
+  'addons': [
+    { name: 'Espresso Shot (₱60) / Whip Cream (₱30) / Pearl (₱30) / Rainbow Jelly (₱30) / Syrup (₱30) / Coffee Jelly (₱30) / Rock Salt & Cheese (₱40) / Cheese (₱30) / Convert to Oat Milk (+₱50)', price: 'Varies', description: 'Enhance your drink.', image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80' }
+  ]
 };
 
 export default function Menu() {

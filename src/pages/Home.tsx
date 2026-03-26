@@ -8,17 +8,17 @@ export default function Home() {
     {
       icon: <Coffee className="h-8 w-8 text-brand-brown" />,
       title: "Specialty Coffee",
-      description: "From our classic Hojicha Latte to Spanish Latte, enjoy brews made with care."
+      description: "From our classic Coffee-based Frappes to Non-coffee Lattes, enjoy brews made with care."
     },
     {
       icon: <Cake className="h-8 w-8 text-brand-brown" />,
-      title: "Artisanal Pastries",
-      description: "Freshly baked brownies, mini cakes, and toasties perfect for any time."
+      title: "Diverse Menu",
+      description: "Rice meals, pasta, pastries, and party trays perfect for any craving."
     },
     {
       icon: <Wifi className="h-8 w-8 text-brand-brown" />,
-      title: "Cozy Atmosphere",
-      description: "Stay awhile in our aesthetic space designed for productive mornings and lazy afternoons."
+      title: "Cozy & Connected",
+      description: "Free Wi-Fi, solar-powered operations, and a spacious second floor."
     }
   ];
 
@@ -39,13 +39,13 @@ export default function Home() {
                 <div className="flex items-center gap-3 bg-brand-dark/30 px-6 py-4 rounded-lg backdrop-blur-sm">
                     <Star className="h-8 w-8 text-yellow-400 fill-current" />
                     <div className="text-left">
-                        <p className="font-bold text-2xl">4.9/5</p>
-                        <p className="text-sm opacity-90">Rating on Foodpanda</p>
+                        <p className="font-bold text-2xl">Must Try</p>
+                        <p className="text-sm opacity-90">Café BrewsCo Specials</p>
                     </div>
                 </div>
                 <div className="max-w-md">
                     <p className="font-serif text-xl italic font-light">
-                        "Probably the best coffee shop in Dagupan. A bit expensive but worth it."
+                        "Love is brewing at Café BrewsCo – come for the coffee, stay for the cozy vibes."
                     </p>
                 </div>
             </div>
@@ -61,7 +61,7 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-4xl font-bold text-brand-dark mb-4">Why Stay Awhile?</h2>
+          <h2 className="font-serif text-4xl font-bold text-brand-dark mb-4">Why Café BrewsCo?</h2>
           <p className="text-brand-accent max-w-2xl mx-auto">
             Beyond great coffee, we offer a space that feels like home.
           </p>

@@ -27,7 +27,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight"
         >
-          Your cozy corner in Dagupan
+          Brewing Happiness in a Cup
         </motion.h1>
         <motion.p 
           initial={{ y: 20, opacity: 0 }}
@@ -35,7 +35,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-sans text-xl md:text-2xl text-brand-beige mb-4 font-light drop-shadow-md"
         >
-          Coffee, cakes, and moments worth staying for.
+          Sip Happens...
         </motion.p>
         <motion.p 
           initial={{ y: 20, opacity: 0 }}
@@ -43,7 +43,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="font-sans text-lg text-brand-beige/90 mb-10 drop-shadow-md font-medium tracking-wide"
         >
-          Open daily 9 AM – 10 PM • Coastway Complex, Arellano St.
+          Rizal Ave., San Carlos City • Open daily 9 AM – 12 MN
         </motion.p>
         
         <motion.div 
@@ -60,19 +60,19 @@ export default function Hero() {
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
           <a 
-            href="https://www.foodpanda.ph/restaurant/lpee/stay-awhile-cafe-and-bakery" 
+            href="https://www.foodpanda.ph/" 
             target="_blank"
             rel="noreferrer"
             className="group bg-brand-beige text-brand-dark px-8 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium transform hover:-translate-y-1 shadow-lg border border-transparent"
           >
             Order via Foodpanda
           </a>
-          <Link 
-            to="/contact" 
+          <a 
+            href="tel:09287945998" 
             className="group bg-transparent text-white px-8 py-3 rounded-full hover:bg-white/10 transition-all duration-300 font-medium transform hover:-translate-y-1 border border-white"
           >
-            Visit Us
-          </Link>
+            Reserve a Table
+          </a>
         </motion.div>
       </div>
     </div>

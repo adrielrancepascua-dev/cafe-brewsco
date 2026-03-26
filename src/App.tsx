@@ -5,6 +5,7 @@ import About from './pages/About';
 import Menu from './pages/Menu';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import PartyTrays from './pages/PartyTrays';
 import { useEffect } from 'react';
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='menu' element={<Menu />} />
+          <Route path='party-trays' element={<PartyTrays />} />
           <Route path='gallery' element={<Gallery />} />
           <Route path='contact' element={<Contact />} />
         </Route>
